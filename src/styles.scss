@@ -1,0 +1,149 @@
+$menu-width: 300px;
+$menu-bg-color: #ffffff;
+$scene-bg-color: #f0f0f0;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$wood-color: #c7b299;
+$cedar-color: #cd7f32;
+$black-color: #1c1c1c;
+$white-color: #f0f0f0;
+$walnut-color: #773f1a;
+$font-family: Arial, Helvetica, sans-serif;
+
+body,
+html,
+#root,
+.App {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.configurator-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: $font-family;
+
+  .scene-container {
+    flex: 1;
+  }
+
+  .edit-menu {
+    width: $menu-width;
+    height: 100vh;
+    background-color: $menu-bg-color;
+    box-shadow: -2px 0 5px $shadow-color;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    gap: 16px;
+    .section {
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 10px;
+      width: 100%;
+      .section-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+
+        .arrow {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border-right: 2px solid #333;
+          border-bottom: 2px solid #333;
+          transform: rotate(45deg);
+          transition: transform 0.3s ease;
+
+          &.up {
+            transform: rotate(-135deg);
+          }
+
+          &.down {
+            transform: rotate(45deg);
+          }
+        }
+      }
+      .section-content {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .material-selector {
+          display: flex;
+          gap: 8px;
+          .circle-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            &.wood {
+              background-color: $wood-color;
+            }
+            &.cedar {
+              background-color: $cedar-color;
+            }
+            &.black {
+              background-color: $black-color;
+            }
+            &.white {
+              background-color: $white-color;
+            }
+            &.walnut {
+              background-color: $walnut-color;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+          }
+        }
+
+        .button-group {
+          display: flex;
+          gap: 10px;
+
+          button {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: #e6e6e6;
+            }
+
+            &.active {
+              background-color: #0066cc;
+              color: #fff;
+              border-color: #0066cc;
+            }
+          }
+        }
+
+        label {
+          display: block;
+          width: 100%;
+        }
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
