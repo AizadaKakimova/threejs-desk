@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # или 'master', если у вас такая ветка
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Укажите нужную версию Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Ветка, куда будет деплоиться
+          folder: build  # Папка, которую мы деплоим, обычно 'build' для React
+          token: ${{ secrets.GITHUB_TOKEN }}
